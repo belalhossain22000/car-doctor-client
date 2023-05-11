@@ -8,10 +8,10 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOut()
-    .then(() => {})
-    .catch(error=>{
-      console.log(error.message);
-    })
+      .then(() => {})
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   const navitems = (
@@ -24,10 +24,14 @@ const NavBar = () => {
       <li>Blog</li>
       <li>Content</li>
       {user?.email ? (
-        <li onClick={handleLogOut}>LogOut</li>
+        <>
+          <Link to={`/boking`}>
+            <li> My Bokings</li>
+          </Link>
+          <li onClick={handleLogOut}>LogOut</li>
+        </>
       ) : (
         <Link to="/login">
-          {" "}
           <li>Login</li>
         </Link>
       )}
