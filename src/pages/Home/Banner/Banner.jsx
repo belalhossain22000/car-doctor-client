@@ -9,18 +9,18 @@ const Banner = () => {
   return (
     <div className="carousel h-[600px]  my-8 rounded-xl w-full">
       <div id="slide1" className="carousel-item relative w-full">
-        <div
-          className="hero "
-          style={{ backgroundImage: `url(${img1})` }}
-        >
+        <div className="hero " style={{ backgroundImage: `url(${img1})` }}>
           <div className="hero-overlay bg-opacity-60"></div>
-          <div className="hero-content text-center text-neutral-content">
-            <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Affordable Price For Car Servicing0</h1>
+          <div className="hero-content  text-neutral-content w-full">
+            <div className="w-full space-y-10">
+              <h1 className="mb-5 text-5xl font-bold ">
+                Affordable Price For <br /> Car Servicing0
+              </h1>
               <p className="mb-5">
-                There are many variations of passages of  available, but the majority have suffered alteration in some form
+                There are many variations of passages of available, <br /> but the
+                majority have suffered alteration in some form
               </p>
-              <div className="flex gap-5 items-center justify-center">
+              <div className="flex gap-5 ">
                 <button className="btn btn-outline">discover more</button>
                 <button className="btn btn-full">latest project</button>
               </div>
@@ -37,19 +37,19 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide2" className="carousel-item relative w-full">
-        <div
-          className="hero "
-          style={{ backgroundImage: `url(${img2})` }}
-        >
+        <div className="hero " style={{ backgroundImage: `url(${img2})` }}>
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Affordable Price For Car Servicing 1</h1>
+              <h1 className="mb-5 text-5xl font-bold">
+                Affordable Price For Car Servicing 1
+              </h1>
               <p className="mb-5">
-                There are many variations of passages of  available, but the majority have suffered alteration in some form
+                There are many variations of passages of available, but the
+                majority have suffered alteration in some form
               </p>
               <div className="flex gap-5 items-center justify-center">
-              <button className="btn btn-outline">discover more</button>
+                <button className="btn btn-outline">discover more</button>
                 <button className="btn btn-full">latest project</button>
               </div>
             </div>
@@ -65,19 +65,19 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide3" className="carousel-item relative w-full">
-        <div
-          className="hero "
-          style={{ backgroundImage: `url(${img3})` }}
-        >
+        <div className="hero " style={{ backgroundImage: `url(${img3})` }}>
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Affordable Price For Car Servicing 2</h1>
+              <h1 className="mb-5 text-5xl font-bold">
+                Affordable Price For Car Servicing 2
+              </h1>
               <p className="mb-5">
-                There are many variations of passages of  available, but the majority have suffered alteration in some form
+                There are many variations of passages of available, but the
+                majority have suffered alteration in some form
               </p>
               <div className="flex gap-5 items-center justify-center">
-              <button className="btn btn-outline">discover more</button>
+                <button className="btn btn-outline">discover more</button>
                 <button className="btn btn-full">latest project</button>
               </div>
             </div>
@@ -93,19 +93,19 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide4" className="carousel-item relative w-full">
-        <div
-          className="hero "
-          style={{ backgroundImage: `url(${img4})` }}
-        >
+        <div className="hero " style={{ backgroundImage: `url(${img4})` }}>
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Affordable Price For Car Servicing 3</h1>
+              <h1 className="mb-5 text-5xl font-bold">
+                Affordable Price For Car Servicing 3
+              </h1>
               <p className="mb-5">
-                There are many variations of passages of  available, but the majority have suffered alteration in some form
+                There are many variations of passages of available, but the
+                majority have suffered alteration in some form
               </p>
               <div className="flex gap-5 items-center justify-center">
-              <button className="btn btn-outline">discover more</button>
+                <button className="btn btn-outline">discover more</button>
                 <button className="btn btn-full">latest project</button>
               </div>
             </div>
@@ -121,19 +121,19 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide5" className="carousel-item relative w-full">
-        <div
-          className="hero "
-          style={{ backgroundImage: `url(${img5})` }}
-        >
+        <div className="hero " style={{ backgroundImage: `url(${img5})` }}>
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Affordable Price For Car Servicing 4</h1>
+              <h1 className="mb-5 text-5xl font-bold">
+                Affordable Price For Car Servicing 4
+              </h1>
               <p className="mb-5">
-                There are many variations of passages of  available, but the majority have suffered alteration in some form
+                There are many variations of passages of available, but the
+                majority have suffered alteration in some form
               </p>
               <div className="flex gap-5 items-center justify-center">
-              <button className="btn btn-outline">discover more</button>
+                <button className="btn btn-outline">discover more</button>
                 <button className="btn btn-full">latest project</button>
               </div>
             </div>
@@ -149,19 +149,19 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide6" className="carousel-item relative w-full">
-        <div
-          className="hero "
-          style={{ backgroundImage: `url(${img6})` }}
-        >
+        <div className="hero " style={{ backgroundImage: `url(${img6})` }}>
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Affordable Price For Car Servicing 5</h1>
+              <h1 className="mb-5 text-5xl font-bold">
+                Affordable Price For Car Servicing 5
+              </h1>
               <p className="mb-5">
-                There are many variations of passages of  available, but the majority have suffered alteration in some form
+                There are many variations of passages of available, but the
+                majority have suffered alteration in some form
               </p>
               <div className="flex gap-5 items-center justify-center">
-              <button className="btn btn-outline">discover more</button>
+                <button className="btn btn-outline">discover more</button>
                 <button className="btn btn-full">latest project</button>
               </div>
             </div>
