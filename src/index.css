@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.btn-outline {
+    @apply bg-white border-[#FF3811] text-[#FF3811] hover:bg-[#FF3811] hover:text-white hover:border-white;
+  }
+  
+.btn-full {
+    @apply bg-[#FF3811] border-white text-white hover:bg-white hover:text-[#FF3811] hover:border-[#FF3811];
+  }
+  
