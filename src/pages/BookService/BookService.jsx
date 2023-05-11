@@ -20,11 +20,27 @@ const BookService = () => {
     const booking={
         coustomeName:name,
         email,
+        img,
         date,
         service_id:_id,
         price:price
     }
     console.log(booking);
+
+    fetch('http://localhost:5000/booking',{
+        method: 'POST',
+        headers:{
+            "content-type": "application/json",
+        },
+        body: JSON.stringify(booking)
+    })
+    .then((res) => res.json())
+    .then(data=>{
+        console.log(data)
+        if(data.insertedId){
+            alert('data inserted successfully')
+        }
+    })
 
   }
 

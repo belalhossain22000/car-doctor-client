@@ -1,16 +1,38 @@
-import { Link } from 'react-router-dom';
-import logo from '../../../assets/logo.svg'
-
+import { Link } from "react-router-dom";
+import logo from "../../../assets/logo.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const NavBar = () => {
-    const navitems= <>
-    <Link to="/"><li>Home</li></Link>
-    <li>About</li>
-    <li>Services</li>
-    <li>Blog</li>
-    <li>Content</li>
-    
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+    .then(() => {})
+    .catch(error=>{
+      console.log(error.message);
+    })
+  };
+
+  const navitems = (
+    <>
+      <Link to="/">
+        <li>Home</li>
+      </Link>
+      <li>About</li>
+      <li>Services</li>
+      <li>Blog</li>
+      <li>Content</li>
+      {user?.email ? (
+        <li onClick={handleLogOut}>LogOut</li>
+      ) : (
+        <Link to="/login">
+          {" "}
+          <li>Login</li>
+        </Link>
+      )}
     </>
+  );
   return (
     <div className="navbar h-28 bg-base-100">
       <div className="navbar-start">
@@ -35,20 +57,22 @@ const NavBar = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 flex gap-5 p-2 shadow bg-base-100 rounded-box w-52"
           >
-           {navitems}
+            {navitems}
           </ul>
         </div>
-       <Link to="/"><img src={logo} alt="" /></Link>
+        <Link to="/">
+          <img src={logo} alt="" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal flex gap-5">
-          {navitems}
-        </ul>
+        <ul className="menu menu-horizontal flex gap-5">{navitems}</ul>
       </div>
       <div className="navbar-end flex gap-5">
         <Link>Cart</Link>
         <Link>search</Link>
-        <button className="btn btn-outline bottom-1 hover:border-[#FF3811] text-[#FF3811] hover:bg-[#FF3811]  btn-[]">Warning</button>
+        <button className="btn btn-outline bottom-1 hover:border-[#FF3811] text-[#FF3811] hover:bg-[#FF3811]  btn-[]">
+          Warning
+        </button>
       </div>
     </div>
   );
