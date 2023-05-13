@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 
@@ -68,6 +69,7 @@ const Login = () => {
               <button className="btn btn-full">Login</button>
             </div>
           </form>
+          <SocialLogin></SocialLogin>
           <p className="ml-7 mb-7 text-center">New to Car doctor <Link className="text-[#FF3811]" to="/signup">SignUp</Link></p>
         </div>
       </div>

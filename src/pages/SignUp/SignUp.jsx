@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
@@ -78,10 +79,14 @@ const SignUp = () => {
               <button className="btn btn-full">Signup</button>
             </div>
           </form>
+          
+
+          <SocialLogin></SocialLogin>
+
           <p className="ml-7 mb-7 text-center">
-            All ready have an account{" "}
-            <Link className="text-[#FF3811]" to="/login">
-              SignUp
+            All ready have an account
+            <Link className="text-[#FF3811] ml-2" to="/login">
+              Login
             </Link>
           </p>
         </div>
