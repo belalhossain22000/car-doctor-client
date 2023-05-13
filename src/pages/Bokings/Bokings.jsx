@@ -1,63 +1,81 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import BokingCard from "./BokingCard";
+import { useNavigate } from "react-router-dom";
 
 const Bokings = () => {
   const { user } = useContext(AuthContext);
-  const [bokings, setBokings] = useState([]);
 
-  const url = `http://localhost:5000/boking?email=${user?.email}`;
+  const navigate = useNavigate();
+  const [bokings, setBokings] = useState([]);
+  console.log(user)
+
   useEffect(() => {
-    fetch(url)
+    const url = `http://localhost:5000/boking?email=${user?.email}`;
+    console.log(url);
+    fetch(url, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("car-access-token")}`,
+      },
+    })
       .then((res) => res.json())
-      .then((data) => setBokings(data));
-  }, [url]);
+      .then((data) => {
+        console.log(data);
+        if (!data?.error) {
+          setBokings(data);
+        } else {
+          navigate("/");
+        }
+      });
+  }, [ navigate,user]);
 
   const handleDelete = (id) => {
     const proceed = confirm("Are You sure you want to delete");
     if (proceed) {
-      fetch(`http://localhost:5000/booking/${id}`,{
-        method: "DELETE"
+      fetch(`http://localhost:5000/booking/${id}`, {
+        method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           if (data.deletedCount > 0) {
-            alert('delete success');
-            const remaining = bokings.filter(booking => booking._id !== id);
+            alert("delete success");
+            const remaining = bokings.filter((booking) => booking._id !== id);
             setBokings(remaining);
           }
         });
     }
   };
 
-
-  const handleBookingConfirm=id=>{
-    fetch(`http://localhost:5000/booking/${id}`,{
-        method: "PATCH",
-        headers:{
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({status:'confirm'})
+  const handleBookingConfirm = (id) => {
+    fetch(`http://localhost:5000/booking/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ status: "confirm" }),
     })
-    .then((res) => res.json())
-    .then((data) => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        if(data.modified){
-            alert("modified")
-            const remaining = bokings.filter(booking => booking._id !== id);
-            const updated = bokings.find(boking => boking._id === id);
-            updated.status = 'confirm'
-            const newBokings = [updated, ...remaining];
-            console.log(newBokings)
-            setBokings(newBokings);
+        if (data.modified) {
+          alert("modified");
+          const remaining = bokings.filter((booking) => booking._id !== id);
+          const updated = bokings.find((boking) => boking._id === id);
+          updated.status = "confirm";
+          const newBokings = [updated, ...remaining];
+          console.log(newBokings);
+          setBokings(newBokings);
         }
-    })
-  }
+      });
+  };
 
   return (
     <div>
-      <h1 className="text-center text-5xl font-bold my-5">Your bokings:{bokings.length}</h1>
+      <h1 className="text-center text-5xl font-bold my-5">
+        Your bokings:{bokings.length}
+      </h1>
 
       <div>
         <div className="overflow-x-auto w-full">
@@ -65,11 +83,7 @@ const Bokings = () => {
             {/* head */}
             <thead>
               <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
+                <th>Delete</th>
                 <th>Image</th>
                 <th>Service</th>
                 <th>Date</th>

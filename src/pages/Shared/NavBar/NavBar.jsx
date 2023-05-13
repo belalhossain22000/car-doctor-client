@@ -8,7 +8,9 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+       
+      })
       .catch((error) => {
         console.log(error.message);
       });
@@ -75,7 +77,7 @@ const NavBar = () => {
         <Link>Cart</Link>
         <Link>search</Link>
         <button className="btn btn-outline bottom-1 hover:border-[#FF3811] text-[#FF3811] hover:bg-[#FF3811]  btn-[]">
-          Warning
+          Appoinment
         </button>
       </div>
     </div>

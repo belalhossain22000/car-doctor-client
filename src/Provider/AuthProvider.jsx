@@ -1,59 +1,76 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import app from "../firebase/firebase.config";
 
-
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 const auth = getAuth(app);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const [user,setUser]=useState(null)
-    const [loading,setLoading]=useState(true)
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    const createUser=(email,password)=>{
-        setLoading(true);
-        return createUserWithEmailAndPassword(auth,email,password)
-    }
+  const singnin = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    const singnin=(email,password)=>{
-        setLoading(true);
-        return signInWithEmailAndPassword(auth,email,password)
-    }
+  //signout
 
-    //signout
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
-    const logOut=()=>{
-        setLoading(true);
-        return signOut(auth)
-    }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log("user", currentUser);
+      setLoading(false);
+      ///today start from here
+      if (currentUser && currentUser?.email) {
+        const loggedUser = { email: currentUser.email };
 
-    useEffect(()=>{
-        const unsubscribe=onAuthStateChanged(auth,(currentUser)=>{
-
-            setUser(currentUser)
-            console.log('user' ,currentUser)
-            setLoading(false)
-
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
         })
-        return ()=>{
-            return unsubscribe
-        }
-    },[])
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("jwt response", data.token);
 
-    const authInfo ={
-        user,
-        loading,
-        createUser,
-        singnin,
-         logOut,
+            localStorage.setItem("car-access-token", data.token);
+          });
+      }
+    });
+    return () => {
+      return unsubscribe;
+    };
+  }, []);
 
-    }
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+  const authInfo = {
+    user,
+    loading,
+    createUser,
+    singnin,
+    logOut,
+  };
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
