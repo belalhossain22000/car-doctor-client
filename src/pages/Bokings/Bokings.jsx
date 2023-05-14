@@ -59,7 +59,7 @@ const Bokings = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.modified) {
+        if (data.modifiedCount>0) {
           alert("modified");
           const remaining = bokings.filter((booking) => booking._id !== id);
           const updated = bokings.find((boking) => boking._id === id);
