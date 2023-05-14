@@ -11,7 +11,7 @@ const Bokings = () => {
   console.log(user)
 
   useEffect(() => {
-    const url = `http://localhost:5000/boking?email=${user?.email}`;
+    const url = `https://car-dctr-server.vercel.app/boking?email=${user?.email}`;
     console.log(url);
     fetch(url, {
       method: "GET",
@@ -33,7 +33,7 @@ const Bokings = () => {
   const handleDelete = (id) => {
     const proceed = confirm("Are You sure you want to delete");
     if (proceed) {
-      fetch(`http://localhost:5000/booking/${id}`, {
+      fetch(`https://car-dctr-server.vercel.app/booking/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -49,7 +49,7 @@ const Bokings = () => {
   };
 
   const handleBookingConfirm = (id) => {
-    fetch(`http://localhost:5000/booking/${id}`, {
+    fetch(`https://car-dctr-server.vercel.app/booking/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
